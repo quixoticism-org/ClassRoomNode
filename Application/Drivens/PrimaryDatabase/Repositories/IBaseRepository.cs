@@ -1,7 +1,7 @@
 ﻿using Application.Domain.Entities;
 using Application.Domain.ValueObjects;
 
-namespace Application.Drivens.MainDatabase.Repositories;
+namespace Application.Drivens.PrimaryDatabase.Repositories;
 
 public interface IBaseRepository<TEntity, TId>
     where TEntity : BaseEntity<TId>

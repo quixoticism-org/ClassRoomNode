@@ -15,7 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Application\Application.csproj" />
-      <ProjectReference Include="..\Drivens\MainDatabase\MainDatabase.csproj" />
+      <ProjectReference Include="..\Drivens\PrimaryDatabase\PrimaryDatabase.csproj" />
       <ProjectReference Include="..\Drivens\IdentityService\IdentityService.csproj" />
       <ProjectReference Include="..\Drivings\RestfulApi\RestfulApi.csproj" />
     </ItemGroup>

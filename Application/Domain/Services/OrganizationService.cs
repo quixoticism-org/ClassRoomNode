@@ -3,7 +3,7 @@ using Application.Domain.Exceptions;
 using Application.Domain.ValueObjects;
 using Application.Drivens.IdentityService.Enums;
 using Application.Drivens.IdentityService.Services;
-using Application.Drivens.MainDatabase;
+using Application.Drivens.PrimaryDatabase;
 
 namespace Application.Domain.Services;
 
@@ -17,10 +17,10 @@ public interface IOrganizationService
 
 public record OrganizationService : IOrganizationService
 {
-    private readonly IMainDbContext _dbCtx;
+    private readonly IPrimaryDbContext _dbCtx;
     private readonly IUserStorage _userStorage;
     
-    public OrganizationService(IMainDbContext dbCtx, IUserStorage userStorage)
+    public OrganizationService(IPrimaryDbContext dbCtx, IUserStorage userStorage)
     {
         _dbCtx = dbCtx;
         _userStorage = userStorage;

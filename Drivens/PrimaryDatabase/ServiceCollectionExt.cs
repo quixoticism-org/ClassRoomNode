@@ -1,4 +1,4 @@
-﻿using Application.Drivens.MainDatabase;
+﻿using Application.Drivens.PrimaryDatabase;
 using Database.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +8,7 @@ namespace Database;
 
 public static class ServiceCollectionExt
 {
-    public static void AddDatabaseServices(this IServiceCollection services, IConfiguration configuration)
+    public static void AddPrimaryDatabaseServices(this IServiceCollection services, IConfiguration configuration)
     {
         #region Configurations
 
@@ -20,9 +20,9 @@ public static class ServiceCollectionExt
 
         var dbSetting = configuration.GetRequiredSection(nameof(DatabaseSettings)).Get<DatabaseSettings>()!;
 
-        services.AddDbContext<MainDbContext>(cfg => cfg.UseNpgsql(dbSetting.ConnectionStr));
+        services.AddDbContext<PrimaryDbContext>(cfg => cfg.UseNpgsql(dbSetting.ConnectionStr));
 
-        services.AddScoped<IMainDbContext>(sp => sp.GetRequiredService<MainDbContext>());
+        services.AddScoped<IPrimaryDbContext>(sp => sp.GetRequiredService<PrimaryDbContext>());
 
         #endregion
     }

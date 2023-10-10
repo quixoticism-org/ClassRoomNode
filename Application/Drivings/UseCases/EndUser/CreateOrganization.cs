@@ -1,7 +1,7 @@
 ﻿using Application.Domain.Services;
 using Application.Domain.ValueObjects;
 using Application.Drivens.IdentityService.Enums;
-using Application.Drivens.MainDatabase;
+using Application.Drivens.PrimaryDatabase;
 using Application.Drivings.Requests;
 using Application.Drivings.UseCases.EndUser.Dtos;
 using MediatR;
@@ -18,9 +18,9 @@ public record CreateOrganizationCommand : AuthorizedCommandRequest<CreateOrganiz
 public record CreateOrganization : IRequestHandler<CreateOrganizationCommand, OrganizationPreviewRes>
 {
     private readonly IOrganizationService _organizationService;
-    private readonly IMainDbContext _dbCtx;
+    private readonly IPrimaryDbContext _dbCtx;
 
-    public CreateOrganization(IOrganizationService organizationService, IMainDbContext dbCtx)
+    public CreateOrganization(IOrganizationService organizationService, IPrimaryDbContext dbCtx)
     {
         _organizationService = organizationService;
         _dbCtx = dbCtx;

@@ -9,7 +9,7 @@ var configuration = builder.Configuration;
 
 #region Drivens
 
-builder.Services.AddDatabaseServices(configuration);
+builder.Services.AddPrimaryDatabaseServices(configuration);
 builder.Services.AddIdentityServiceServices(configuration);
 
 #endregion

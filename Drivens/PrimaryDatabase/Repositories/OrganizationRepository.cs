@@ -1,13 +1,13 @@
 ﻿using Application.Domain.Entities;
 using Application.Domain.ValueObjects;
-using Application.Drivens.MainDatabase.Repositories;
+using Application.Drivens.PrimaryDatabase.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Database.Repositories;
 
 public class OrganizationRepository : BaseRepository<Organization, OrganizationId>, IOrganizationRepository
 {
-    public OrganizationRepository(MainDbContext dbContext) : base(dbContext)
+    public OrganizationRepository(PrimaryDbContext dbContext) : base(dbContext)
     {
     }
 

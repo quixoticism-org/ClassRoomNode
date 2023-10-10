@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Drivens", "Drivens", "{4233
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Drivings", "Drivings", "{F12FC212-678B-4F0F-B2B8-437811BC3B76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainDatabase", "Drivens\MainDatabase\MainDatabase.csproj", "{8E0D9EB4-AB13-4D90-B8C6-E589DCFFD723}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimaryDatabase", "Drivens\PrimaryDatabase\PrimaryDatabase.csproj", "{8E0D9EB4-AB13-4D90-B8C6-E589DCFFD723}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService", "Drivens\IdentityService\IdentityService.csproj", "{EFC60540-920B-40CF-8E3A-068ECD77AA46}"
 EndProject

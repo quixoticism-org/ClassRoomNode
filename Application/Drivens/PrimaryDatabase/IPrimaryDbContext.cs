@@ -1,8 +1,8 @@
-﻿using Application.Drivens.MainDatabase.Repositories;
+﻿using Application.Drivens.PrimaryDatabase.Repositories;
 
-namespace Application.Drivens.MainDatabase;
+namespace Application.Drivens.PrimaryDatabase;
 
-public interface IMainDbContext
+public interface IPrimaryDbContext
 {
     public IOrganizationRepository OrganizationRepo { get; init; }
     public IOrgMemberRepository OrgMemberRepo { get; init; }

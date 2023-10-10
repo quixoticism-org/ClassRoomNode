@@ -1,13 +1,13 @@
 ﻿using Application.Domain.Entities;
-using Application.Drivens.MainDatabase;
-using Application.Drivens.MainDatabase.Repositories;
+using Application.Drivens.PrimaryDatabase;
+using Application.Drivens.PrimaryDatabase.Repositories;
 using Database.EntityConfigurations;
 using Database.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Database;
 
-public class MainDbContext : DbContext, IMainDbContext
+public class PrimaryDbContext : DbContext, IPrimaryDbContext
 {
     #region DbSets
 
@@ -27,7 +27,7 @@ public class MainDbContext : DbContext, IMainDbContext
 
     #endregion
     
-    public MainDbContext(DbContextOptions options) : base(options)
+    public PrimaryDbContext(DbContextOptions options) : base(options)
     {
         OrganizationRepo = new OrganizationRepository(this);
         OrgMemberRepo = new OrgMemberRepository(this);
