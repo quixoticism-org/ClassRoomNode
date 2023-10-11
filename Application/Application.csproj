@@ -12,7 +12,6 @@
 
     <ItemGroup>
       <Folder Include="Drivens\EventQueue\" />
-      <Folder Include="Drivens\Firebase\" />
       <Folder Include="Drivens\MailService\" />
       <Folder Include="Drivings\Events\" />
       <Folder Include="Drivings\UseCases\Undefined\" />

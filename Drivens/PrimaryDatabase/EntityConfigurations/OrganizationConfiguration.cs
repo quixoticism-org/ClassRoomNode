@@ -45,5 +45,15 @@ internal class OrganizationConfiguration : BaseEntityConfiguration<Organization,
             .HasMany(o => o.ClassRoomList)
             .WithOne(c => c.Organization)
             .HasForeignKey(c => c.OrganizationId);
+
+        builder
+            .HasMany(o => o.InvitationList)
+            .WithOne(i => i.Organization)
+            .HasForeignKey(i => i.OrganizationId);
+
+        builder
+            .HasMany(o => o.OrgGlobalInvitationList)
+            .WithOne(o => o.Organization)
+            .HasForeignKey(o => o.OrganizationId);
     }
 }
