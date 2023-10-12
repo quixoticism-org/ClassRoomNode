@@ -12,6 +12,7 @@ public interface IOrganizationService
     Task<Organization> CreateOrganizationAsync(
         UserId userCreatorId,
         OrganizationName name,
+        ICollection<Email> guestEmailList,
         CancellationToken cancelToken = default);
 }
 
@@ -26,7 +27,7 @@ public record OrganizationService : IOrganizationService
         _userStorage = userStorage;
     }
 
-    public async Task<Organization> CreateOrganizationAsync(UserId userCreatorId, OrganizationName name, CancellationToken cancelToken = default)
+    public async Task<Organization> CreateOrganizationAsync(UserId userCreatorId, OrganizationName name, ICollection<Email> guestEmailList, CancellationToken cancelToken = default)
     {
         var user = await _userStorage.GetByIdAndRoleAsync(userCreatorId.Val, Role.EndUser, cancelToken);
         if (user is null)
@@ -36,10 +37,20 @@ public record OrganizationService : IOrganizationService
         if (isOrgExist)
             throw new OrganizationExistExc();
 
-        return new Organization
+        var newOrg = new Organization
         {
             UserCreatorId = userCreatorId,
             Name = name,
+            InvitationList = new ()
         };
+        
+        newOrg.InvitationList.AddRange(guestEmailList.Select(email => new Invitation
+        {
+            OrganizationId = newOrg.Id,
+            UserEmail = email,
+            Code = InvitationCode.New()
+        }));
+        
+        return newOrg;
     }
 }

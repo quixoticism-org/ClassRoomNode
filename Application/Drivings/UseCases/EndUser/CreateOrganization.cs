@@ -8,6 +8,7 @@ using MediatR;
 
 namespace Application.Drivings.UseCases.EndUser;
 
+// TODO validate this shit
 public record CreateOrganizationBody(string Name, List<string> GuestEmailList);
 
 public record CreateOrganizationCommand : AuthorizedCommandRequest<CreateOrganizationBody, OrganizationPreviewRes>
@@ -30,7 +31,9 @@ public record CreateOrganization : IRequestHandler<CreateOrganizationCommand, Or
     {
         var authorUserId = new UserId(request.AuthorInfo.Id);
         var orgName = new OrganizationName(request.Body.Name);
-        var newOrg = await _organizationService.CreateOrganizationAsync(authorUserId, orgName, cancelToken);
+        var guestEmailList = request.Body.GuestEmailList.Select(email => new Email(email)).ToList();
+        
+        var newOrg = await _organizationService.CreateOrganizationAsync(authorUserId, orgName, guestEmailList, cancelToken);
         
         await _dbCtx.OrganizationRepo.TrackAsync(newOrg, cancelToken);
         await _dbCtx.SaveChangesAsync(cancelToken);
